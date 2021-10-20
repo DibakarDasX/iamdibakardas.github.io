@@ -2,7 +2,7 @@
 - 👀 I’m interested in coding, creating and learning new things, watching Anime and reading Manga and Cryptocurrencies ofc.
 - 🌱 I’m currently learning the things which I like.
 - 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+- 📫 How to reach me? DM me on <a href="https://t.me/DibakarDas" target="_blank">Telegram</a>
 
 <!---
 iamdibakardas/iamdibakardas is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
