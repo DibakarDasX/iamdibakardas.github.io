@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: dibakardas.com
+Token: 8615e31e4d0abc658e88a756801da2dc728634a7d92891aab85ec5df4187d25c
