@@ -222,13 +222,25 @@
             50% { border-color: #ff6b9d; }
         }
         
+        /* Fixed Grid Layout */
         .main-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 40px;
             position: relative;
             z-index: 1;
+        }
+        
+        /* On desktop, make first and last cards span 2 columns */
+        .card:nth-child(1),
+        .card:nth-child(5) {
+            grid-column: span 2;
+        }
+        
+        /* Donation section (4th card) should also span 2 columns */
+        .card:nth-child(4) {
+            grid-column: span 2;
         }
         
         .card {
@@ -709,21 +721,6 @@
             opacity: 1;
         }
         
-        /* Desktop-specific improvements */
-        @media (min-width: 1024px) {
-            .main-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .card:first-child {
-                grid-column: span 2;
-            }
-            
-            .card:nth-child(4) {
-                grid-column: span 2;
-            }
-        }
-        
         /* Mobile-specific fixes */
         @media (max-width: 1023px) {
             html, body {
@@ -737,6 +734,13 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
                 margin-top: 30px;
+            }
+            
+            /* Reset grid column spans for mobile */
+            .card:nth-child(1),
+            .card:nth-child(4),
+            .card:nth-child(5) {
+                grid-column: span 1;
             }
             
             .card {
