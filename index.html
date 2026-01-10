@@ -86,14 +86,14 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             background: linear-gradient(135deg, #0a0e17 0%, #1a2332 100%);
             border-bottom: 2px solid #2a3b5a;
             position: relative;
@@ -129,7 +129,7 @@
         }
         
         h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 10px;
             background: linear-gradient(90deg, #ff6b9d, #00d4ff, #00ffaa);
             -webkit-background-clip: text;
@@ -139,25 +139,25 @@
         }
         
         .tagline {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(1rem, 2vw, 1.4rem);
             color: #a0c8ff;
             margin-bottom: 20px;
             font-style: italic;
         }
         
         .profile-img {
-            width: clamp(120px, 20vw, 150px);
-            height: clamp(120px, 20vw, 150px);
+            width: clamp(120px, 20vw, 180px);
+            height: clamp(120px, 20vw, 180px);
             border-radius: 50%;
             border: 4px solid #ff6b9d;
-            margin: 20px auto;
+            margin: 30px auto;
             background: linear-gradient(45deg, #1a2332, #2a3b5a);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(3rem, 6vw, 4rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             color: #00d4ff;
-            box-shadow: 0 0 25px rgba(255, 107, 157, 0.5);
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
             position: relative;
         }
         
@@ -166,40 +166,42 @@
             position: absolute;
             bottom: -5px;
             right: -5px;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #00ffaa;
         }
         
         .main-content {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .card {
-            flex: 1;
-            min-width: 300px;
             background: rgba(26, 35, 50, 0.9);
             border-radius: 15px;
-            padding: clamp(20px, 3vw, 25px);
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid #2a3b5a;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         
         h2 {
             color: #00ffaa;
             margin-bottom: 20px;
-            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+            padding-bottom: 10px;
         }
         
         h2 i {
@@ -209,7 +211,7 @@
         .token-highlight {
             background: rgba(0, 255, 170, 0.1);
             border-left: 4px solid #00ffaa;
-            padding: 15px;
+            padding: 20px;
             margin: 20px 0;
             border-radius: 0 8px 8px 0;
         }
@@ -217,40 +219,47 @@
         .token-name {
             font-weight: bold;
             color: #00ffaa;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
         }
         
         .anime-section {
             background: rgba(255, 107, 157, 0.1);
             border: 1px solid #ff6b9d;
             border-radius: 10px;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
         }
         
         .anime-title {
             color: #ff6b9d;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 10px;
         }
         
         .interests {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             margin-top: 20px;
         }
         
         .interest-tag {
             background: rgba(0, 212, 255, 0.15);
-            padding: 6px 12px;
+            padding: 8px 16px;
             border-radius: 50px;
             border: 1px solid #00d4ff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        
+        .interest-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
         
         .anime-tag {
@@ -258,9 +267,13 @@
             border: 1px solid #ff6b9d;
         }
         
+        .anime-tag:hover {
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+        
         .social-links {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 15px;
             margin-top: 20px;
         }
@@ -268,27 +281,49 @@
         .social-link {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
+            gap: 15px;
+            padding: 18px 20px;
             background: rgba(42, 59, 90, 0.7);
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
             color: #e0e0e0;
             transition: all 0.3s ease;
-            flex: 1;
-            min-width: 200px;
+            border: 1px solid transparent;
+            overflow: hidden;
+            position: relative;
         }
         
         .social-link:hover {
-            background: rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.15);
             transform: translateX(5px);
             color: #00d4ff;
+            border-color: #00d4ff;
         }
         
         .social-icon {
-            font-size: 1.5rem;
-            width: 30px;
+            font-size: 1.8rem;
+            width: 40px;
             text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .social-text {
+            flex-grow: 1;
+            min-width: 0;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+        
+        .social-text strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+        
+        .social-text br + * {
+            font-size: 0.95rem;
+            color: #a0c8ff;
         }
         
         .inactive-note {
@@ -297,20 +332,23 @@
             font-style: italic;
             margin-top: 20px;
             text-align: center;
+            padding: 12px;
+            background: rgba(42, 59, 90, 0.3);
+            border-radius: 8px;
         }
         
         .fun-fact {
             background: rgba(255, 215, 0, 0.1);
             border: 1px dashed gold;
-            padding: 15px;
+            padding: 18px;
             border-radius: 10px;
             margin-top: 20px;
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
+            margin-top: 50px;
+            padding: 25px;
             border-top: 1px solid #2a3b5a;
             color: #a0a0a0;
             font-size: 0.9rem;
@@ -331,7 +369,7 @@
         .waifu-quote {
             font-style: italic;
             text-align: center;
-            margin: 15px 0;
+            margin: 20px 0;
             color: #ffb6c1;
             border-right: 3px solid #ff6b9d;
             padding-right: 10px;
@@ -339,6 +377,7 @@
             white-space: nowrap;
             overflow: hidden;
             max-width: 100%;
+            font-size: 1.1rem;
         }
         
         @keyframes typing {
@@ -351,29 +390,52 @@
             50% { border-color: #ff6b9d }
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .card {
-                min-width: 100%;
+        /* Desktop-specific improvements */
+        @media (min-width: 1024px) {
+            .main-content {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .social-link {
-                min-width: 100%;
+            .card:first-child {
+                grid-column: span 2;
             }
             
-            .profile-img {
-                width: 140px;
-                height: 140px;
+            .card:nth-child(4) {
+                grid-column: span 2;
             }
         }
         
-        @media (max-width: 480px) {
+        /* Responsive Adjustments */
+        @media (max-width: 1023px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
             
             header {
-                padding: 30px 15px;
+                padding: 40px 15px;
+            }
+            
+            .card {
+                padding: 25px 20px;
+            }
+            
+            .social-link {
+                padding: 15px;
+            }
+            
+            .social-icon {
+                font-size: 1.6rem;
+                width: 35px;
             }
             
             .interests {
@@ -386,6 +448,31 @@
                 border-right: none;
                 border-left: 3px solid #ff6b9d;
                 padding-left: 10px;
+                font-size: 1rem;
+            }
+            
+            .profile-img {
+                width: 140px;
+                height: 140px;
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -443,7 +530,7 @@
                 
                 <div class="token-highlight">
                     <p class="token-name">Dibakar Das Token (XDD)</p>
-                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle every time I see it (it's like anime laughter in token form!).</p>
+                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle every time I see it (it's like anime laughter in token form!). Check it out <a href="https://token.dibakardas.com" target="_blank">here.</a></p>
                 </div>
                 
                 <p>Blockchain fascinates me because it's like the Sharingan of technology - once you understand it, you see the world differently! Plus, crypto and anime both have passionate communities that argue online about the best ones.</p>
@@ -453,10 +540,10 @@
                 <h2><i class="fas fa-laptop-code"></i> Tech + Anime = Life</h2>
                 <p>My building philosophy: Keep it simple, make it work, then maybe add some anime references (figuratively speaking... unless?).</p>
                 
-                <ul style="padding-left: 20px; margin-top: 15px;">
-                    <li><strong>Simple static websites</strong> - Because sometimes you just need information, not a 3D interactive experience</li>
-                    <li><strong>Blockchain projects</strong> - Decentralizing all the things!</li>
-                    <li><strong>Anime-related coding projects</strong> - Because why not combine my two passions?</li>
+                <ul style="padding-left: 20px; margin-top: 15px; margin-bottom: 15px;">
+                    <li style="margin-bottom: 8px;"><strong>Simple static websites</strong> - Because sometimes you just need information, not a 3D interactive experience</li>
+                    <li style="margin-bottom: 8px;"><strong>Blockchain projects</strong> - Decentralizing all the things!</li>
+                    <li style="margin-bottom: 8px;"><strong>Anime-related coding projects</strong> - Because why not combine my two passions?</li>
                     <li><strong>Whatever catches my interest</strong> - Usually while an anime plays in the background</li>
                 </ul>
                 
@@ -477,33 +564,33 @@
                 <div class="social-links">
                     <a href="mailto:admin@dibakardas.com" class="social-link" target="_blank">
                         <div class="social-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <strong>Email</strong><br>
-                            admin@dibakardas.com
+                        <div class="social-text">
+                            <strong>Email</strong>
+                            <span>admin@dibakardas.com</span>
                         </div>
                     </a>
                     
                     <a href="https://t.me/DibakarDas" class="social-link" target="_blank">
                         <div class="social-icon"><i class="fab fa-telegram"></i></div>
-                        <div>
-                            <strong>Telegram</strong><br>
-                            @DibakarDas
+                        <div class="social-text">
+                            <strong>Telegram</strong>
+                            <span>@DibakarDas</span>
                         </div>
                     </a>
                     
                     <a href="https://www.instagram.com/dibakardasx" class="social-link" target="_blank">
                         <div class="social-icon"><i class="fab fa-instagram"></i></div>
-                        <div>
-                            <strong>Instagram</strong><br>
-                            @dibakardasx
+                        <div class="social-text">
+                            <strong>Instagram</strong>
+                            <span>@dibakardasx</span>
                         </div>
                     </a>
                     
                     <a href="https://x.com/DibakarDasX" class="social-link" target="_blank">
                         <div class="social-icon"><i class="fab fa-twitter"></i></div>
-                        <div>
-                            <strong>X (Twitter)</strong><br>
-                            @DibakarDasX
+                        <div class="social-text">
+                            <strong>X (Twitter)</strong>
+                            <span>@DibakarDasX</span>
                         </div>
                     </a>
                 </div>
@@ -628,7 +715,7 @@
             cards.forEach(card => {
                 card.style.display = 'none';
                 card.offsetHeight; // Trigger reflow
-                card.style.display = 'block';
+                card.style.display = 'flex';
             });
         });
     </script>
