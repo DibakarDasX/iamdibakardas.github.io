@@ -183,7 +183,7 @@
             color: #00ffaa;
         }
         
-        /* Anime Quote Styling - Fixed */
+        /* Anime Quote Styling */
         .waifu-quote {
             font-style: italic;
             text-align: center;
@@ -279,6 +279,28 @@
             margin-bottom: 5px;
         }
         
+        .token-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #00d4ff;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .token-link:hover {
+            background: rgba(0, 212, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+        
         .anime-section {
             background: rgba(255, 107, 157, 0.1);
             border: 1px solid #ff6b9d;
@@ -325,6 +347,245 @@
         
         .anime-tag:hover {
             box-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+        
+        /* Donation Section Styles */
+        .donation-notice {
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid gold;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .donation-notice h3 {
+            color: gold;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .donation-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .donation-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .donation-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .donation-icon.upi {
+            background: rgba(106, 90, 205, 0.2);
+            color: #6a5acd;
+            border-color: #6a5acd;
+        }
+        
+        .donation-icon.upi:hover {
+            box-shadow: 0 0 20px rgba(106, 90, 205, 0.5);
+        }
+        
+        .donation-icon.bitcoin {
+            background: rgba(247, 147, 26, 0.2);
+            color: #f7931a;
+            border-color: #f7931a;
+        }
+        
+        .donation-icon.bitcoin:hover {
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
+        }
+        
+        .donation-icon.ethereum {
+            background: rgba(98, 126, 234, 0.2);
+            color: #627eea;
+            border-color: #627eea;
+        }
+        
+        .donation-icon.ethereum:hover {
+            box-shadow: 0 0 20px rgba(98, 126, 234, 0.5);
+        }
+        
+        .donation-icon.polygon {
+            background: rgba(130, 71, 229, 0.2);
+            color: #8247e5;
+            border-color: #8247e5;
+        }
+        
+        .donation-icon.polygon:hover {
+            box-shadow: 0 0 20px rgba(130, 71, 229, 0.5);
+        }
+        
+        .donation-icon-text {
+            position: absolute;
+            bottom: -25px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            color: #a0c8ff;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: rgba(26, 35, 50, 0.98);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s ease;
+            border: 2px solid #00ffaa;
+            box-shadow: 0 0 40px rgba(0, 255, 170, 0.4);
+            animation: modalAppear 0.4s ease forwards;
+        }
+        
+        @keyframes modalAppear {
+            to {
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+        }
+        
+        .modal-title {
+            color: #00ffaa;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: #ff6b9d;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.2);
+            background: rgba(255, 107, 157, 0.1);
+        }
+        
+        .method-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .method-icon-large {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .method-icon-large.upi { color: #6a5acd; }
+        .method-icon-large.bitcoin { color: #f7931a; }
+        .method-icon-large.ethereum { color: #627eea; }
+        .method-icon-large.polygon { color: #8247e5; }
+        
+        .method-address-container {
+            background: rgba(42, 59, 90, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #2a3b5a;
+            position: relative;
+        }
+        
+        .method-address {
+            font-family: monospace;
+            word-break: break-all;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(90deg, #00d4ff, #00ffaa);
+            border: none;
+            color: #0a0e17;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .method-description {
+            font-size: 0.95rem;
+            color: #a0c8ff;
+            margin-top: 20px;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
         }
         
         .social-links {
@@ -424,6 +685,30 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 170, 0.9);
+            color: #0a0e17;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copy-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
         /* Desktop-specific improvements */
         @media (min-width: 1024px) {
             .main-content {
@@ -475,6 +760,12 @@
                 -webkit-transform: translate3d(0,0,0);
                 transform: translate3d(0,0,0);
             }
+            
+            .donation-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -520,6 +811,25 @@
                 font-size: 3.5rem;
             }
             
+            .donation-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .donation-icon-text {
+                font-size: 0.7rem;
+                bottom: -22px;
+            }
+            
+            .modal-content {
+                padding: 25px 20px;
+            }
+            
+            .method-icon-large {
+                font-size: 3rem;
+            }
+            
             /* Prevent momentum scrolling issues */
             body {
                 -webkit-overflow-scrolling: touch;
@@ -559,6 +869,21 @@
             .waifu-quote {
                 font-size: 1rem;
             }
+            
+            .donation-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+            
+            .donation-icon-text {
+                font-size: 0.65rem;
+                bottom: -20px;
+            }
+            
+            .donation-icons {
+                gap: 20px;
+            }
         }
         
         /* Fix for all touch devices */
@@ -567,23 +892,23 @@
                 transform: none;
             }
             
-            .social-link:hover {
+            .social-link:hover, .donation-icon:hover, .token-link:hover {
                 transform: none;
                 background: rgba(42, 59, 90, 0.7);
             }
             
-            .interest-tag:hover, .anime-tag:hover {
+            .interest-tag:hover, .anime-tag:hover, .copy-btn:hover {
                 transform: none;
                 box-shadow: none;
             }
             
             /* Active states for mobile */
-            .social-link:active {
+            .social-link:active, .donation-icon:active, .token-link:active {
                 background: rgba(0, 212, 255, 0.15);
-                transform: translateX(5px);
+                transform: translateX(5px) scale(1.05);
             }
             
-            .interest-tag:active, .anime-tag:active {
+            .interest-tag:active, .anime-tag:active, .copy-btn:active {
                 transform: scale(1.05);
             }
         }
@@ -602,6 +927,104 @@
             </div>
             <div class="loading-text" id="loadingPercent">0%</div>
         </div>
+    </div>
+    
+    <!-- Payment Modals -->
+    <div class="modal-overlay" id="upiModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-qrcode"></i> UPI Payment</h3>
+                <button class="close-modal" onclick="closeModal('upiModal')">&times;</button>
+            </div>
+            <div class="method-info">
+                <div class="method-icon-large upi">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <div class="method-address-container">
+                    <div class="method-address" id="upiAddress">dibakar.das@superyes</div>
+                    <button class="copy-btn" onclick="copyToClipboard('upiAddress')">
+                        <i class="fas fa-copy"></i> Copy UPI ID
+                    </button>
+                </div>
+                <p class="method-description">
+                    Send money using any UPI app like Google Pay, PhonePe, Paytm, or Amazon Pay. Just paste the UPI ID in your app.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="bitcoinModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fab fa-bitcoin"></i> Bitcoin Donation</h3>
+                <button class="close-modal" onclick="closeModal('bitcoinModal')">&times;</button>
+            </div>
+            <div class="method-info">
+                <div class="method-icon-large bitcoin">
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+                <div class="method-address-container">
+                    <div class="method-address" id="bitcoinAddress">3NP3BEgx5TTX33aqyzBayzciewJTPkTqMW</div>
+                    <button class="copy-btn" onclick="copyToClipboard('bitcoinAddress')">
+                        <i class="fas fa-copy"></i> Copy Bitcoin Address
+                    </button>
+                </div>
+                <p class="method-description">
+                    Send only Bitcoin (BTC) to this address. Any other cryptocurrency sent to this address will be lost.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="ethereumModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fab fa-ethereum"></i> Ethereum Donation</h3>
+                <button class="close-modal" onclick="closeModal('ethereumModal')">&times;</button>
+            </div>
+            <div class="method-info">
+                <div class="method-icon-large ethereum">
+                    <i class="fab fa-ethereum"></i>
+                </div>
+                <div class="method-address-container">
+                    <div class="method-address" id="ethereumAddress">0xcD12A0683f86B37d85d796E470Fe00B2dAD10B8C</div>
+                    <button class="copy-btn" onclick="copyToClipboard('ethereumAddress')">
+                        <i class="fas fa-copy"></i> Copy Ethereum Address
+                    </button>
+                </div>
+                <p class="method-description">
+                    Send ETH or any ERC20 tokens to this address. Make sure you're on the Ethereum network.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="polygonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-layer-group"></i> Polygon Donation</h3>
+                <button class="close-modal" onclick="closeModal('polygonModal')">&times;</button>
+            </div>
+            <div class="method-info">
+                <div class="method-icon-large polygon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="method-address-container">
+                    <div class="method-address" id="polygonAddress">0xB1D736740D93352A282C4a471c43Ccf1F4d44e9E</div>
+                    <button class="copy-btn" onclick="copyToClipboard('polygonAddress')">
+                        <i class="fas fa-copy"></i> Copy Polygon Address
+                    </button>
+                </div>
+                <p class="method-description">
+                    Send MATIC or any Polygon network tokens to this address. Make sure you're on the Polygon network.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="fas fa-check-circle"></i> Copied to clipboard!
     </div>
     
     <!-- Main Website Content -->
@@ -646,7 +1069,10 @@
                 
                 <div class="token-highlight">
                     <p class="token-name">Dibakar Das Token (XDD)</p>
-                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle every time I see it (it's like anime laughter in token form!). Check it out <a href="https://token.dibakardas.com" target="_blank">here.</a></p>
+                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle every time I see it (it's like anime laughter in token form!).</p>
+                    <a href="https://token.dibakardas.com" class="token-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visit Token Website
+                    </a>
                 </div>
                 
                 <p>Blockchain fascinates me because it's like the Sharingan of technology - once you understand it, you see the world differently! Plus, crypto and anime both have passionate communities that argue online about the best ones.</p>
@@ -674,7 +1100,40 @@
             </div>
             
             <div class="card">
-                <h2><i class="fas fa-paper-plane"></i> Contact & Social Stuff</h2>
+                <h2><i class="fas fa-hand-holding-heart"></i> Support My Work</h2>
+                
+                <div class="donation-notice">
+                    <h3><i class="fas fa-heart"></i> Support My Journey</h3>
+                    <p>I'm currently jobless and pay for all my services (domain, hosting, etc.) from limited pocket money. Your donations help me keep creating cool stuff while I search for opportunities. Every little bit helps! ❤️</p>
+                    
+                    <div class="donation-icons">
+                        <div class="donation-icon upi" onclick="openModal('upiModal')">
+                            <i class="fas fa-qrcode"></i>
+                            <div class="donation-icon-text">UPI</div>
+                        </div>
+                        <div class="donation-icon bitcoin" onclick="openModal('bitcoinModal')">
+                            <i class="fab fa-bitcoin"></i>
+                            <div class="donation-icon-text">Bitcoin</div>
+                        </div>
+                        <div class="donation-icon ethereum" onclick="openModal('ethereumModal')">
+                            <i class="fab fa-ethereum"></i>
+                            <div class="donation-icon-text">Ethereum</div>
+                        </div>
+                        <div class="donation-icon polygon" onclick="openModal('polygonModal')">
+                            <i class="fas fa-layer-group"></i>
+                            <div class="donation-icon-text">Polygon</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 25px; font-size: 0.9rem; color: #a0c8ff;">
+                        Click any icon above to view donation details
+                    </p>
+                </div>
+                
+                <p>Your support means I can continue working on projects like my XDD token, building websites, and learning new tech while enjoying my anime marathons. Thank you for considering! 🙏</p>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-paper-plane"></i> Contact & Social</h2>
                 <p>Feel free to reach out if you want to talk tech, blockchain, anime recommendations, or why One Piece is taking forever to end.</p>
                 
                 <div class="social-links">
@@ -725,6 +1184,7 @@
         <footer>
             <p>Made with <i class="fas fa-heart" style="color:#ff6b9d;"></i> and probably too much ramen <span class="anime-emoji">🍜</span></p>
             <p>© Dibakar Das | Professional maker of things that sometimes work while anime plays</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">Thank you for visiting! Your support means the world to me ❤️</p>
         </footer>
     </div>
 
@@ -877,12 +1337,80 @@
                     this.classList.remove('active');
                 });
             });
+            
+            // Close modal when clicking outside
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('active')) {
+                            closeModal(modal.id);
+                        }
+                    });
+                }
+            });
         });
+        
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Copy to Clipboard Function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                // Show notification
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                
+                // Hide notification after 2 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Show notification
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                
+                // Hide notification after 2 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            });
+        }
         
         // Handle window resize for the typing animation
         window.addEventListener('resize', function() {
             const animeQuote = document.getElementById('animeQuote');
-            const quoteContainer = document.querySelector('.waifu-quote');
             
             // On mobile, ensure the quote is properly displayed
             if (window.innerWidth <= 768) {
@@ -904,4 +1432,3 @@
     </script>
 </body>
 </html>
-
