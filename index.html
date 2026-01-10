@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dibakar Das - Techie & Creator</title>
+    <title>Dibakar Das - Techie, Creator & Anime Enthusiast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0e17;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-anime-icon {
+            font-size: 3rem;
+            color: #00ffaa;
+            margin-bottom: 20px;
+            animation: animeBounce 1.5s infinite;
+        }
+        
+        @keyframes animeBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .loading-text {
+            color: #a0c8ff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            width: 80%;
+            max-width: 300px;
+            height: 8px;
+            background-color: #2a3b5a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00d4ff, #00ffaa);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        /* Main Website Styles */
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +92,7 @@
             z-index: 2;
         }
         
-        .crypto-animation {
+        .anime-animation {
             position: absolute;
             top: 0;
             left: 0;
@@ -48,27 +100,25 @@
             height: 100%;
             z-index: 1;
             opacity: 0.1;
+            pointer-events: none;
         }
         
-        .coin {
+        .anime-icon {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: gold;
-            border-radius: 50%;
-            box-shadow: 0 0 10px gold;
+            font-size: 1.5rem;
             animation: float 20s infinite linear;
+            opacity: 0.7;
         }
         
         @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); }
-            100% { transform: translateY(-100px) translateX(100px); }
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); }
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 10px;
-            background: linear-gradient(90deg, #00d4ff, #00ffaa);
+            background: linear-gradient(90deg, #ff6b9d, #00d4ff, #00ffaa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -76,25 +126,35 @@
         }
         
         .tagline {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: #a0c8ff;
             margin-bottom: 20px;
             font-style: italic;
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: clamp(120px, 20vw, 150px);
+            height: clamp(120px, 20vw, 150px);
             border-radius: 50%;
-            border: 4px solid #00d4ff;
+            border: 4px solid #ff6b9d;
             margin: 20px auto;
             background: linear-gradient(45deg, #1a2332, #2a3b5a);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: clamp(3rem, 6vw, 4rem);
             color: #00d4ff;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 25px rgba(255, 107, 157, 0.5);
+            position: relative;
+        }
+        
+        .profile-img::after {
+            content: "⚡";
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            font-size: 1.5rem;
+            color: #00ffaa;
         }
         
         .main-content {
@@ -107,9 +167,9 @@
         .card {
             flex: 1;
             min-width: 300px;
-            background: rgba(26, 35, 50, 0.8);
+            background: rgba(26, 35, 50, 0.9);
             border-radius: 15px;
-            padding: 25px;
+            padding: clamp(20px, 3vw, 25px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid #2a3b5a;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -123,14 +183,14 @@
         h2 {
             color: #00ffaa;
             margin-bottom: 20px;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         h2 i {
-            color: #00d4ff;
+            color: #ff6b9d;
         }
         
         .token-highlight {
@@ -147,19 +207,42 @@
             font-size: 1.2rem;
         }
         
+        .anime-section {
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid #ff6b9d;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .anime-title {
+            color: #ff6b9d;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
         .interests {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
             margin-top: 20px;
         }
         
         .interest-tag {
             background: rgba(0, 212, 255, 0.15);
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 50px;
             border: 1px solid #00d4ff;
             font-size: 0.9rem;
+        }
+        
+        .anime-tag {
+            background: rgba(255, 107, 157, 0.15);
+            border: 1px solid #ff6b9d;
         }
         
         .social-links {
@@ -220,22 +303,43 @@
             font-size: 0.9rem;
         }
         
-        .blockchain-emoji {
+        .anime-emoji {
             font-size: 1.5rem;
-            animation: pulse 2s infinite;
+            animation: sparkle 2s infinite;
+            display: inline-block;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
+        .waifu-quote {
+            font-style: italic;
+            text-align: center;
+            margin: 15px 0;
+            color: #ffb6c1;
+            border-right: 3px solid #ff6b9d;
+            padding-right: 10px;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff6b9d }
+        }
+        
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
             .card {
                 min-width: 100%;
             }
@@ -243,34 +347,78 @@
             .social-link {
                 min-width: 100%;
             }
+            
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            .interests {
+                justify-content: center;
+            }
+            
+            .waifu-quote {
+                white-space: normal;
+                animation: none;
+                border-right: none;
+                border-left: 3px solid #ff6b9d;
+                padding-left: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-anime-icon">
+            <i class="fas fa-tv"></i>
+        </div>
+        <div class="loading-text">Loading the ultimate tech-weeb experience...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="loading-text" id="loadingPercent">0%</div>
+    </div>
+    
+    <!-- Main Website Content -->
     <header>
-        <div class="crypto-animation" id="cryptoAnimation"></div>
+        <div class="anime-animation" id="animeAnimation"></div>
         <div class="header-content">
             <h1>Dibakar Das</h1>
-            <p class="tagline">Techie • Creator • Occasionally Functional Human</p>
+            <p class="tagline">Techie • Creator • Anime Enjoyer • Professional Procrastinator</p>
             
             <div class="profile-img">
                 <i class="fas fa-code"></i>
             </div>
             
-            <p>I make stuff. Sometimes it even works!</p>
+            <p>I make stuff while watching anime. Multitasking at its finest!</p>
+            <div class="waifu-quote" id="animeQuote">"The ones who never give up are the ones who succeed." - Naruto Uzumaki</div>
         </div>
     </header>
     
     <div class="container">
         <div class="main-content">
             <div class="card">
-                <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
-                <p>Hey there! I'm Dibakar, a tech enthusiast who loves to build, break, and (mostly) fix things. I get excited about technology, especially when it involves blockchains, crypto, and creating websites that don't require 15 JavaScript frameworks to load.</p>
+                <h2><i class="fas fa-user-ninja"></i> About Me</h2>
+                <p>Hey there! I'm Dibakar, a tech enthusiast with a serious anime addiction. By day, I'm building blockchain projects and static websites. By night, I'm binge-watching isekai anime and wondering why I can't be transported to a fantasy world.</p>
                 
-                <p>My approach to tech: if it's interesting and within my skill range (or slightly beyond), I'm probably already trying to build it. I believe in learning by doing, even if the "doing" involves occasional facepalms and Google searches like "why is my code not working".</p>
+                <p>My philosophy: If it's interesting and within my skill range (or slightly beyond), I'm probably already trying to build it while an anime plays in the background. I believe in learning by doing, even if the "doing" involves occasional facepalms and Googling "why is my code not working" during anime fight scenes.</p>
                 
-                <div class="fun-fact">
-                    <p><strong>Fun fact:</strong> I can probably explain blockchain better than I can explain where I left my keys this morning.</p>
+                <div class="anime-section">
+                    <div class="anime-title">
+                        <i class="fas fa-tv"></i> Current Anime Obsession
+                    </div>
+                    <p>Right now I'm probably watching something with overpowered protagonists, cool fight scenes, or a slice-of-life that makes me wish my life was that interesting.</p>
                 </div>
             </div>
             
@@ -280,35 +428,36 @@
                 
                 <div class="token-highlight">
                     <p class="token-name">Dibakar Das Token (XDD)</p>
-                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle too.</p>
+                    <p>Yes, that's its actual name. No, I'm not joking. Yes, the "XDD" ticker makes me chuckle every time I see it (it's like anime laughter in token form!). Check it out <a href="https://token.dibakardas.com" target="_blank">here.</a></p>
                 </div>
                 
-                <p>Blockchain and crypto fascinate me because they're like digital Lego - you can build anything, and if you mess up, everyone on the network knows about it instantly! What's not to love?</p>
-                
-                <div class="interests">
-                    <span class="interest-tag">Blockchain</span>
-                    <span class="interest-tag">Cryptocurrency</span>
-                    <span class="interest-tag">Smart Contracts</span>
-                    <span class="interest-tag">Web3</span>
-                </div>
+                <p>Blockchain fascinates me because it's like the Sharingan of technology - once you understand it, you see the world differently! Plus, crypto and anime both have passionate communities that argue online about the best ones.</p>
             </div>
             
             <div class="card">
-                <h2><i class="fas fa-laptop-code"></i> What I Like To Build</h2>
-                <p>My building philosophy: Keep it simple, make it work, then maybe add some glitter (figuratively speaking).</p>
+                <h2><i class="fas fa-laptop-code"></i> Tech + Anime = Life</h2>
+                <p>My building philosophy: Keep it simple, make it work, then maybe add some anime references (figuratively speaking... unless?).</p>
                 
                 <ul style="padding-left: 20px; margin-top: 15px;">
-                    <li><strong>Simple static websites</strong> - Because sometimes you just need information, not a 3D interactive experience of a company logo</li>
+                    <li><strong>Simple static websites</strong> - Because sometimes you just need information, not a 3D interactive experience</li>
                     <li><strong>Blockchain projects</strong> - Decentralizing all the things!</li>
-                    <li><strong>Whatever catches my interest</strong> - From scripts that automate boring tasks to apps that solve problems I didn't know I had</li>
+                    <li><strong>Anime-related coding projects</strong> - Because why not combine my two passions?</li>
+                    <li><strong>Whatever catches my interest</strong> - Usually while an anime plays in the background</li>
                 </ul>
                 
-                <p>I enjoy the process of creation more than the result. The "aha!" moment when something finally works is my favorite drug (the legal kind, obviously).</p>
+                <div class="interests">
+                    <span class="interest-tag">Blockchain</span>
+                    <span class="interest-tag anime-tag">Anime</span>
+                    <span class="interest-tag">Web Development</span>
+                    <span class="interest-tag anime-tag">Manga</span>
+                    <span class="interest-tag">Crypto</span>
+                    <span class="interest-tag anime-tag">Isekai</span>
+                </div>
             </div>
             
             <div class="card">
                 <h2><i class="fas fa-paper-plane"></i> Contact & Social Stuff</h2>
-                <p>Feel free to reach out if you want to talk tech, blockchain, or the meaning of life (I'm still figuring that last one out).</p>
+                <p>Feel free to reach out if you want to talk tech, blockchain, anime recommendations, or why One Piece is taking forever to end.</p>
                 
                 <div class="social-links">
                     <a href="mailto:admin@dibakardas.com" class="social-link" target="_blank">
@@ -346,57 +495,126 @@
                 
                 <p class="inactive-note">
                     <i class="fas fa-exclamation-circle"></i> Fair warning: I'm not super active on social media. 
-                    I'm probably busy building something or figuring out why my code is broken.
+                    I'm probably busy coding while catching up on the latest anime season.
                 </p>
+                
+                <div class="fun-fact">
+                    <p><strong>Fun fact:</strong> I can probably explain blockchain better than I can explain anime filler episodes to non-weebs.</p>
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>Made with <i class="fas fa-heart" style="color:#ff4081;"></i> and probably too much coffee</p>
-            <p>This entire website is in one HTML file because sometimes simplicity is beautiful <span class="blockchain-emoji">⛓️</span></p>
-            <p style="margin-top: 10px;">© Dibakar Das | Professional maker of things that sometimes work</p>
+            <p>Made with <i class="fas fa-heart" style="color:#ff6b9d;"></i> and probably too much ramen <span class="anime-emoji">🍜</span></p>
+            <p>This entire website is in one HTML file because sometimes simplicity is beautiful <span class="anime-emoji">⚡</span></p>
+            <p style="margin-top: 10px;">© Dibakar Das | Professional maker of things that sometimes work while anime plays</p>
         </footer>
     </div>
 
     <script>
-        // Create floating crypto coins animation
+        // Loading screen functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const animationContainer = document.getElementById('cryptoAnimation');
-            const coinCount = 20;
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressFill = document.getElementById('progressFill');
+            const loadingPercent = document.getElementById('loadingPercent');
+            const animeQuote = document.getElementById('animeQuote');
             
-            for (let i = 0; i < coinCount; i++) {
-                const coin = document.createElement('div');
-                coin.classList.add('coin');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressFill.style.width = `${progress}%`;
+                loadingPercent.textContent = `${Math.round(progress)}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 500);
+                    }, 300);
+                }
+            }, 100);
+            
+            // Anime quotes array
+            const animeQuotes = [
+                '"The ones who never give up are the ones who succeed." - Naruto Uzumaki',
+                '"People\'s lives don\'t end when they die. It ends when they lose faith." - Itachi Uchiha',
+                '"If you don\'t take risks, you can\'t create a future." - Monkey D. Luffy',
+                '"Knowing what it feels to be in pain, is exactly why we try to be kind to others." - Jiraiya',
+                '"Hard work is worthless for those that don\'t believe in themselves." - Naruto Uzumaki',
+                '"Power comes in response to a need, not a desire." - Son Goku',
+                '"Sometimes, the best way to solve your own problems is to help someone else." - Uncle Iroh',
+                '"It\'s not the face that makes someone a monster; it\'s the choices they make with their lives." - Naruto Uzumaki'
+            ];
+            
+            // Set random anime quote
+            animeQuote.textContent = animeQuotes[Math.floor(Math.random() * animeQuotes.length)];
+            
+            // Create floating anime icons animation
+            const animationContainer = document.getElementById('animeAnimation');
+            const iconCount = 15;
+            const animeIcons = ['⚡', '🗡️', '🍥', '👁️', '🍜', '👑', '🐉', '💫', '🌀', '✨', '💥', '🔮', '🦊', '🌸', '🍙'];
+            
+            for (let i = 0; i < iconCount; i++) {
+                const icon = document.createElement('div');
+                icon.classList.add('anime-icon');
+                icon.textContent = animeIcons[Math.floor(Math.random() * animeIcons.length)];
                 
                 // Random position and size
-                const size = Math.random() * 15 + 10;
-                coin.style.width = `${size}px`;
-                coin.style.height = `${size}px`;
-                coin.style.left = `${Math.random() * 100}vw`;
+                const size = Math.random() * 20 + 15;
+                icon.style.fontSize = `${size}px`;
+                icon.style.left = `${Math.random() * 100}vw`;
                 
                 // Random animation delay and duration
                 const delay = Math.random() * 5;
-                const duration = Math.random() * 10 + 15;
-                coin.style.animationDelay = `${delay}s`;
-                coin.style.animationDuration = `${duration}s`;
+                const duration = Math.random() * 15 + 20;
+                icon.style.animationDelay = `${delay}s`;
+                icon.style.animationDuration = `${duration}s`;
                 
-                // Random color for coins
-                const colors = ['gold', '#00ffaa', '#00d4ff', '#ffaa00'];
-                coin.style.background = colors[Math.floor(Math.random() * colors.length)];
-                coin.style.boxShadow = `0 0 10px ${coin.style.background}`;
+                // Random color for icons
+                const colors = ['#ff6b9d', '#00ffaa', '#00d4ff', '#ffaa00', '#a0c8ff'];
+                icon.style.color = colors[Math.floor(Math.random() * colors.length)];
                 
-                animationContainer.appendChild(coin);
+                animationContainer.appendChild(icon);
             }
             
-            // Add a fun hover effect to the token highlight
+            // Add hover effect to the token highlight
             const tokenHighlight = document.querySelector('.token-highlight');
-            tokenHighlight.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-                this.style.transition = 'transform 0.3s ease';
-            });
+            if (tokenHighlight) {
+                tokenHighlight.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                tokenHighlight.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
             
-            tokenHighlight.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
+            // Make anime tags sparkle on hover
+            const animeTags = document.querySelectorAll('.anime-tag');
+            animeTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 0 10px #ff6b9d';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+        
+        // Ensure proper rendering on all devices
+        window.addEventListener('resize', function() {
+            // Force redraw for certain elements on resize
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.display = 'none';
+                card.offsetHeight; // Trigger reflow
+                card.style.display = 'block';
             });
         });
     </script>
