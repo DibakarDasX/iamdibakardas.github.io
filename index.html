@@ -1193,7 +1193,7 @@
     </div>
 
     <script>
-        // Loading screen functionality
+        // Loading screen functionality - SLOWER VERSION
         document.addEventListener('DOMContentLoaded', function() {
             const loadingScreen = document.getElementById('loading-screen');
             const progressFill = document.getElementById('progressFill');
@@ -1201,8 +1201,10 @@
             const animeQuote = document.getElementById('animeQuote');
             
             let progress = 0;
+            // Slower loading speed - increased interval time and smaller increments
             const interval = setInterval(() => {
-                progress += Math.random() * 15;
+                // Slower, smaller increments for a more gradual loading experience
+                progress += Math.random() * 8; // Reduced from 15 to 8 for slower progression
                 if (progress > 100) progress = 100;
                 
                 progressFill.style.width = `${progress}%`;
@@ -1210,6 +1212,7 @@
                 
                 if (progress >= 100) {
                     clearInterval(interval);
+                    // Add a slight delay at 100% for better effect
                     setTimeout(() => {
                         loadingScreen.style.opacity = '0';
                         setTimeout(() => {
@@ -1217,9 +1220,9 @@
                             // Force a reflow after hiding loading screen
                             document.body.offsetHeight;
                         }, 500);
-                    }, 300);
+                    }, 800); // Added extra delay at 100%
                 }
-            }, 100);
+            }, 150); // Increased from 100ms to 150ms for slower updates
             
             // Anime quotes array
             const animeQuotes = [
